@@ -1,16 +1,18 @@
 const { Sequelize } = require("sequelize");
 
+
 const sequelize = new Sequelize(
-  // process.env.POSTGRES_DB,
-  //  process.env.POSTGRES_USER,
-  //  process.env.POSTGRES_PASSWORD,
-  'postgressDB', 'root', 'faesa123',
+  process.env.POSTGRESS_DB,
+  process.env.POSTGRESS_USER,
+  process.env.POSTGRESS_PASSWORD,
+
   {
     dialect: "postgres",
-    host: '0.0.0.0',
-    port: '5432',
+    host: process.env.POSTGRESS_HOST,
+    port: process.env.POSTGRESS_PORTA,
   }
 );
+
 
 (async () => {
   try {
@@ -20,5 +22,4 @@ const sequelize = new Sequelize(
     console.log(error);
   }
 })();
-console.log(process.env.POSTGRES_USER)
 module.exports = sequelize;
